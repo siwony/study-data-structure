@@ -30,12 +30,16 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
 
     @Override
     public void deleteAtHead() {
-        //TODO 헤드 노드 삭제하기
+        this.head = head.getNextNode();
     }
 
     @Override
     public void deleteAtTail() {
-        //TODO 꼬리 노드 삭제하기
+        Node node = head;
+        while(node.getNextNode().getNextNode() !=null)
+            node = node.getNextNode();
+
+        node.updateNext(null);
     }
 
     @Override
@@ -54,6 +58,7 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
         for(; findNode != null; findNode = findNode.getNextNode()){
             printNode(findNode);
         }
+        System.out.println();
     }
 
     private void printNode(Node node){
