@@ -43,22 +43,41 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
     }
 
     @Override
-    public void deleteAtSpecificNode(Node node, int data) {
-        //TODO 특정 노드 삭제하기
+    public void deleteAtSpecificNode(Node node) {
+        Node deleteAfterNode = head;
+        while(deleteAfterNode.getNextNode() != node){
+            deleteAfterNode = deleteAfterNode.getNextNode();
+        }
+
+        deleteAfterNode.updateNext(node.getNextNode());
     }
 
     @Override
     public void deleteThisList() {
-        //TODO 이 List 삭제하기
+        this.head = null;
     }
 
     @Override
     public void printAll(){
         Node findNode = head;
+        int count = 0;
         for(; findNode != null; findNode = findNode.getNextNode()){
+            count++;
             printNode(findNode);
         }
+        if(count == 0)
+            System.out.println("해당 리스트는 비었습니다.");
         System.out.println();
+    }
+
+    @Override
+    public Node findNodeByNodeData(int data) {
+        for(Node node = head; node.getNextNode() != null; node = node.getNextNode()) {
+            if (node.getData() == data)
+                return node;
+        }
+
+        throw new RuntimeException("해당 데이터로 Node를 찾을 수 없습니다.");
     }
 
     private void printNode(Node node){

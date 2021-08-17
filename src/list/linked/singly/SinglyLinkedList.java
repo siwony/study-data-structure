@@ -4,6 +4,8 @@ public interface SinglyLinkedList {
 
     void printAll();
 
+    Node findNodeByNodeData(int data);
+
     Node addAtHead(int data);
 
     Node addAtTail(int data);
@@ -14,7 +16,7 @@ public interface SinglyLinkedList {
 
     void deleteAtTail();
 
-    void deleteAtSpecificNode(Node node, int data);
+    void deleteAtSpecificNode(Node node);
 
     void deleteThisList();
 }
