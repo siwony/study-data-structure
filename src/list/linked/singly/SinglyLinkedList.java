@@ -4,11 +4,11 @@ public interface SinglyLinkedList {
 
     void printAll();
 
-    void addAtHead(int data);
+    Node addAtHead(int data);
 
-    void addAtTail(int data);
+    Node addAtTail(int data);
 
-    void addAtSpecificNode(Node node, int data);
+    Node addAtSpecificNode(Node node, int data);
 
     void deleteAtHead();
 

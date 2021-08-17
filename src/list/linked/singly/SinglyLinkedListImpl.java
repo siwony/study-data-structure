@@ -5,22 +5,27 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
     private Node head;
 
     public SinglyLinkedListImpl(int data){
-        this.head = new Node(1, null);
+        this.head = new Node(data, null);
     }
 
     @Override
-    public void addAtHead(int data){
+    public Node addAtHead(int data){
         this.head = new Node(data, this.head);
+
+        return this.head;
     }
 
     @Override
-    public void addAtTail(int data) {
-        findTail().updateNext(new Node(data));
+    public Node addAtTail(int data) {
+        return findTail().updateNext(new Node(data));
     }
 
     @Override
-    public void addAtSpecificNode(Node node, int data) {
-        //TODO 특정 노드를 기준으로 노드 추가하기
+    public Node addAtSpecificNode(Node node, int data) {
+        Node newNode = new Node(data, node.getNextNode());
+        node.updateNext(newNode);
+
+        return newNode;
     }
 
     @Override

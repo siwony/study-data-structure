@@ -1,6 +1,6 @@
 package list.linked.singly;
 
-class Node {
+public class Node {
 
     private int data;
     private Node next = null;
@@ -22,7 +22,9 @@ class Node {
         return data;
     }
 
-    public void updateNext(Node next){
+    public Node updateNext(Node next){
         this.next = next;
+
+        return next;
     }
 }
