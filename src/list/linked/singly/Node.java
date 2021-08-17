@@ -10,9 +10,8 @@ class Node {
         this.next = next;
     }
 
-    public void updateNode(int data, Node next){
-        this.data = data;
-        this.next = next;
+    public Node(int data){
+        this(data, null);
     }
 
     public Node getNextNode(){
@@ -21,5 +20,9 @@ class Node {
 
     public int getData(){
         return data;
+    }
+
+    public void updateNext(Node next){
+        this.next = next;
     }
 }
