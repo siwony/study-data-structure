@@ -8,17 +8,14 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
         this.head = new Node(1, null);
     }
 
+    @Override
     public void addAtHead(int data){
         this.head = new Node(data, this.head);
     }
 
     @Override
     public void addAtTail(int data) {
-        Node findNode = head;
-        while( findNode.getNextNode() != null)
-            findNode = findNode.getNextNode();
-
-        findNode.updateNext(new Node(data));
+        findTail().updateNext(new Node(data));
     }
 
     @Override
@@ -58,6 +55,14 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
         System.out.print(
                 "|   " + node.getData() + "   |"
         );
+    }
+
+    private Node findTail(){
+        Node node = head;
+        while( node.getNextNode() != null)
+            node = node.getNextNode();
+
+        return node;
     }
 
 }
