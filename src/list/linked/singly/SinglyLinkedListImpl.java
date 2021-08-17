@@ -36,6 +36,7 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
     @Override
     public void deleteAtTail() {
         Node node = head;
+        // 마지막 노드의 전 노드를 찾아야 되므로 현재 탐색한 노드를 기준으로 다음다음 node를 찾아 null이면 해당 노드에서 next를 null로 만든다.
         while(node.getNextNode().getNextNode() !=null)
             node = node.getNextNode();
 
