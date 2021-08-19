@@ -8,6 +8,9 @@ public class SinglyLinkedListTest {
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedListImpl(1);
 
+        singlyLinkedList.deleteAtSpecificNode(singlyLinkedList.findNodeByNodeData(1));
+        singlyLinkedList.printAll();
+
         singlyLinkedList.addAtHead(12);
         singlyLinkedList.addAtHead(10);
         singlyLinkedList.addAtSpecificNode(singlyLinkedList.addAtTail(98), 18);
@@ -20,9 +23,6 @@ public class SinglyLinkedListTest {
         singlyLinkedList.printAll();
 
         singlyLinkedList.deleteAtTail();
-        singlyLinkedList.printAll();
-
-        singlyLinkedList.deleteAtSpecificNode(singlyLinkedList.findNodeByNodeData(1));
         singlyLinkedList.printAll();
 
         singlyLinkedList.deleteThisList();

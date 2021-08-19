@@ -17,20 +17,23 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
 
     @Override
     public Node addAtTail(int data) {
-        return findTail().updateNext(new Node(data));
+        return findTail().updateLink(new Node(data));
     }
 
     @Override
     public Node addAtSpecificNode(Node node, int data) {
         Node newNode = new Node(data, node.getNextNode());
-        node.updateNext(newNode);
+        node.updateLink(newNode);
 
         return newNode;
     }
 
     @Override
     public void deleteAtHead() {
-        this.head = head.getNextNode();
+        if(head.getNextNode() !=null)
+            this.head = head.getNextNode();
+        else
+            deleteThisList();
     }
 
     @Override
@@ -40,17 +43,20 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
         while(node.getNextNode().getNextNode() !=null)
             node = node.getNextNode();
 
-        node.updateNext(null);
+        node.updateLink(null);
     }
 
     @Override
     public void deleteAtSpecificNode(Node node) {
-        Node deleteAfterNode = head;
-        while(deleteAfterNode.getNextNode() != node){
-            deleteAfterNode = deleteAfterNode.getNextNode();
+        if(node == head) {
+            deleteAtHead();
+        }else{
+            Node deleteAfterNode = head;
+            while(deleteAfterNode.getNextNode() != node){
+                deleteAfterNode = deleteAfterNode.getNextNode();
+            }
+            deleteAfterNode.updateLink(node.getNextNode());
         }
-
-        deleteAfterNode.updateNext(node.getNextNode());
     }
 
     @Override
@@ -60,25 +66,25 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
 
     @Override
     public void printAll(){
-        Node findNode = head;
-        int count = 0;
-        for(; findNode != null; findNode = findNode.getNextNode()){
-            count++;
-            printNode(findNode);
-        }
-        if(count == 0)
-            System.out.println("해당 리스트는 비었습니다.");
+        if(head == null) System.out.println("해당 리스트는 비었습니다.");
+        for(Node node = head; node != null; node = node.getNextNode())
+            printNode(node);
+
         System.out.println();
     }
 
     @Override
     public Node findNodeByNodeData(int data) {
-        for(Node node = head; node.getNextNode() != null; node = node.getNextNode()) {
+        if(this.head.getData() == data)
+            return this.head;
+
+        for(Node node = this.head; node.getNextNode() != null; node = node.getNextNode()) {
             if (node.getData() == data)
                 return node;
         }
 
-        throw new RuntimeException("해당 데이터로 Node를 찾을 수 없습니다.");
+        System.out.println("해당 데이터로 Node를 찾을 수 없습니다.");
+        return null;
     }
 
     private void printNode(Node node){
@@ -94,5 +100,7 @@ public class SinglyLinkedListImpl implements SinglyLinkedList{
 
         return node;
     }
+
+
 
 }

@@ -3,11 +3,11 @@ package list.linked.singly;
 public class Node {
 
     private int data;
-    private Node next = null;
+    private Node link = null;
 
-    public Node(int data, Node next){
+    public Node(int data, Node link){
         this.data = data;
-        this.next = next;
+        this.link = link;
     }
 
     public Node(int data){
@@ -15,16 +15,16 @@ public class Node {
     }
 
     public Node getNextNode(){
-        return this.next;
+        return this.link;
     }
 
     public int getData(){
         return data;
     }
 
-    public Node updateNext(Node next){
-        this.next = next;
+    public Node updateLink(Node link){
+        this.link = link;
 
-        return next;
+        return link;
     }
 }
